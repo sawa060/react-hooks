@@ -5,16 +5,22 @@ import EventForm from './EventForm'
 import AppContext from '../contexts/AppContext'
 
 import Events from "./Events";
+import OperationLogs from "./OperationLogs";
 import reducer from '../reducer'
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, [])
+  const initialState = {
+    events: [],
+    operationLogs: []
+  }
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <div className="container-fluid">
         <EventForm />
         <Events />
+        <OperationLogs />
       </div>
     </AppContext.Provider>
   );
